@@ -1,0 +1,6 @@
+{% for tag in tags|apply_tag_filter if tag.tags %}
+    <article>
+        <h2><a href="{{ tag.url }}">{{ tag.tag }}</a></h2>
+        <p>{{ tag.description }} test</p>
+    </article>
+{% endfor %}

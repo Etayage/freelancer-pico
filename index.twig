@@ -63,6 +63,10 @@
         {% if not index.portfolio.disabled and not single_page_mode %}
             {% include "includes/portfolio_modals.twig" %}
         {% endif %}
-
+	
+	{% if not index.blog-list.disabled %}
+            {% include "includes/blog-list.twig" %}
+        {% endif %}
+        
     </body>
 </html>

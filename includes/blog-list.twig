@@ -1,0 +1,14 @@
+<aside> 
+{% for tag in meta.tags %}
+    <h3>More pages tagged: <a href="{{ base_url }}/tags/?tag={{ tag }}">{{ tag }}</a></h3>
+    <ul>
+    {% for page in pages if page.title and page.meta.tags %}
+        {% if tag in page.meta.tags and not (page.id ends with 'index') and page.id != current_page.id %}
+        <li>
+            <a href="{{ page.url }}">{{ page.title }}</a> - {{ page.description }}
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endfor %}
+</aside> 
