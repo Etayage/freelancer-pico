@@ -111,6 +111,7 @@ body {
   -webkit-tap-highlight-color: rgba(var(--bs-black-rgb), 0);
 }
 
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -151,6 +152,7 @@ h2, .h2 {
 
 h3, .h3 {
   font-size: calc(1.3rem + 0.6vw);
+  text-align: center;
 }
 @media (min-width: 1200px) {
   h3, .h3 {
@@ -188,7 +190,10 @@ abbr[data-bs-original-title] {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
 }
-
+.search_form {
+  width: 5em;
+  height: 3em;
+}
 address {
   margin-bottom: 1rem;
   font-style: normal;
