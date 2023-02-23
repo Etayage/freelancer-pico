@@ -46,17 +46,18 @@
 		{% include "search_content.twig" %}
 	{% else %}
 	
-		 {% if single_page_mode %}
-		    {% include "includes/content.twig" %}
-		{% endif %}
+	{% if single_page_mode %}
+	    {% include "includes/content.twig" %}
+	{% endif %}
+	
         {% if not index.tags.disabled and not single_page_mode %}
             {% include "includes/tags.twig" %}
         {% endif %}
 
 
-		{% if not index.portfolio.disabled and not single_page_mode %}
-		    {% include "includes/portfolio.twig" %}
-		{% endif %}
+	{% if not index.portfolio.disabled and not single_page_mode %}
+	    {% include "includes/portfolio.twig" %}
+	{% endif %}
 		
 	{% endif %}
 	
