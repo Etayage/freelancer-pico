@@ -40,9 +40,7 @@
             {% include "includes/header.twig" %}
         {% elseif not index.nav.disabled %}
             <div class="mb-5 pb-5 pt-2"></div>
-        {% endif %}
-
- 
+        {% endif %} 
        
 	{% if search_terms %}
 		{% include "search_content.twig" %}
@@ -51,6 +49,10 @@
 		 {% if single_page_mode %}
 		    {% include "includes/content.twig" %}
 		{% endif %}
+        {% if not index.tags.disabled and not single_page_mode %}
+            {% include "includes/tags.twig" %}
+        {% endif %}
+
 
 		{% if not index.portfolio.disabled and not single_page_mode %}
 		    {% include "includes/portfolio.twig" %}
