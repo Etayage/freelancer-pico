@@ -7,16 +7,12 @@
 {% from "includes/markdown_by_paragraph.twig" import markdown_by_paragraph %}
 {% from "includes/actions.twig" import actions %}
 {% from "includes/video.twig" import video %}
-
 <!-- Content Section-->
-<section class="page-section portfolio" id="content">
+<section class="page-section content" id="content">
     <div class="container">
         <div class="mx-lg-5 px-lg-5">
             <!-- Content Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ meta.title ? meta.title : current_page.id }}</h2>
-	    <br/>
-            <h3 class="page-section-heading text-center text-secondary mb-0">{{ meta.subtitle ? meta.subtitle }}</h3>
-
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -27,48 +23,7 @@
                 {{ video(meta.video, meta.image, "content") }}
             {% elseif meta.image %}
                 <img class="img-fluid rounded mb-5 d-block mx-auto" src="{{ meta.image|url }}" alt="{{ meta.image_alt }}" />
-            {% endif %} 
-            
-            <div class="row justify-content-center">
-            <!-- article -->
-            {% for article_item in meta.article_items.items %}
-            
-                {% set classes = ["col-md-6", "col-lg-4"] %}
-                {% if not loop.last %}
-                    {% set classes = classes|merge(["mb-5"]) %}
-                    {% if loop.revindex <= (loop.length - 1) % 3 + 1 %}
-                        {% if loop.revindex == 3 %}
-                            {% set classes = classes|merge(["mb-lg-0"]) %}
-                        {% elseif loop.revindex == 2 %}
-                            {% if loop.index == 2 %}
-                                {% set classes = classes|merge(["mb-lg-0"]) %}
-                            {% else %}
-                                {% set classes = classes|merge(["mb-md-0"]) %}
-                            {% endif %}
-                        {% endif %}
-                    {% elseif loop.revindex == 2 and loop.index == 3 %}
-                        {% set classes = classes|merge(["mb-md-0","mb-lg-5"]) %}
-                    {% endif %}
-                {% endif %}
-            
-            
-            
-		<div class="{{ classes|join(" ") }}">
-		    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal{{ loop.index }}" style="text-align:center;">
-		    			<a href="{{article_item.link}}" target="_blank">
-			<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-			    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-arrow-circle-right fa-3x"></i></div>
-			</div>
-
-			    <img class="img-fluid d-block mx-auto" src="{{ article_item.image|url }}" />
-			</a>
-			        
-			{{ article_item.title }} 
-		    </div>
-	       </div>               
-               
-            {% endfor %}
-            </div>
+            {% endif %}
             {{ content }}
             {{ actions(meta.actions, "single_page") }}
         </div>
