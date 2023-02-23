@@ -23,17 +23,20 @@
             {% if pageTag|trim == tag %}
                 <li>
                     <a href="{{ page.url }}">{{ page.title }}</a>
+                    <p>{{ page.description }}</p>
                 </li>
             {% endif %}
         {% endfor %}
     {% endfor %}
     </ul>
+{#
 {% else %}
-    {# List of all tags used on the site #}
+    List of all tags used on the site
     <ul>
     {% for tag in tags|sort %}
         <li><a href="{{current_page.url}}/?tag={{ tag }}">{{ tag }}</li>
     {% endfor %}
     </ul>
 {% endif %}
+#}
 {% endblock content %}
