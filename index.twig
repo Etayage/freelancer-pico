@@ -5,6 +5,7 @@
  # Licensed under MIT (https://github.com/mayamcdougall/freelancer-pico/blob/main/LICENSE)
  #}
 {% set index = pages["index"].meta %}
+{% set tag = url_param('tag', 'string') %}
 
 {% if current_page.id != "index" %}
     {% set single_page_mode = true %}
@@ -45,19 +46,18 @@
 	{% if search_terms %}
 		{% include "search_content.twig" %}
 	{% else %}
-	
-	{% if single_page_mode %}
-	    {% include "includes/content.twig" %}
-	{% endif %}
-	
-        {% if not index.tags.disabled and not single_page_mode %}
-            {% include "includes/tags.twig" %}
-        {% endif %}
-
-
-	{% if not index.portfolio.disabled and not single_page_mode %}
-	    {% include "includes/portfolio.twig" %}
-	{% endif %}
+		
+		{% if tag and not index.tags.disabled and not single_page_mode %}
+		    {% include "includes/tags.twig" %}
+		{% else %}
+			{% if single_page_mode %}
+			    {% include "includes/content.twig" %}
+			{% endif %}
+			
+			{% if not index.portfolio.disabled and not single_page_mode %}
+			    {% include "includes/portfolio.twig" %}
+			{% endif %}
+		{% endif %}
 		
 	{% endif %}
 	
